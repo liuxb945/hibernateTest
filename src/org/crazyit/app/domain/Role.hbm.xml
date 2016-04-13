@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="org.crazyit.app.domain">
+        <class name="Role" table="roles" catalog="hibernate">
+            <id name="id" column="id">
+                <generator class="native"/>
+            </id>
+            <property name="name" column="name"/>
+            <set name="users" table="user_role" cascade="all">
+                <key>
+                    <column name="role_id"/>
+                </key>
+                <many-to-many column="user_id" class="User"/>
+            </set>
+        </class>
+    </hibernate-mapping>

@@ -97,7 +97,7 @@ public class PersonManager {
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 		Person p = (Person) session.load(Person.class, new Integer(11));
-		System.out.println(p.getInterests().size());
+		System.out.println(((Interest)(p.getInterests().toArray()[0])).getInterest_content());
 		tx.commit();
 		HibernateUtil.closeSession();
 	}

@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-4-13 11:18:04 by Hibernate Tools 3.4.0.CR1 -->
-<hibernate-mapping>
-    <class name="org.crazyit.app.domain.Interest" table="INTEREST">
+<hibernate-mapping package="org.crazyit.app.domain">
+    <class name="Interest" table="INTEREST">
         <id name="interest_id" type="java.lang.Integer">
             <column name="INTEREST_ID" />
             <generator class="identity" />
@@ -11,5 +11,9 @@
         <property name="interest_content" type="java.lang.String">
             <column name="INTEREST_CONTENT" />
         </property>
+        <set name="persons" cascade="save-update" table="person_interest">
+			<key column="interest_id" />
+			<many-to-many class="Person" column="person_id"/>
+		</set>
     </class>
 </hibernate-mapping>
