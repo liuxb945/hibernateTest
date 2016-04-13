@@ -1,7 +1,9 @@
 package org.crazyit.app.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Description:
@@ -25,7 +27,7 @@ public class Person
 	private Address address;
 	
 	//集合属性，保留该对象关联的学校
-		private List<String> schools = new ArrayList<String>();
+		private Set<String> schools = new HashSet<String>();
 
 	//id属性的setter和getter方法
 	public void setId(Integer id)
@@ -66,10 +68,16 @@ public class Person
 	{
 		return this.address;
 	}
-	public List<String> getSchools() {
+	/*public List<String> getSchools() {
 		return schools;
 	}
 	public void setSchools(List<String> schools) {
+		this.schools = schools;
+	}*/
+	public Set<String> getSchools() {
+		return schools;
+	}
+	public void setSchools(Set<String> schools) {
 		this.schools = schools;
 	}
 }

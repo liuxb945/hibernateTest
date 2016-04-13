@@ -36,5 +36,6 @@
 		<!-- 罗列所有的映射文件 -->
 		<mapping resource="org/crazyit/app/domain/Person.hbm.xml"/>
 		<mapping resource="org/crazyit/app/domain/Address.hbm.xml"/>
+		<mapping resource="org/crazyit/app/domain/School.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
