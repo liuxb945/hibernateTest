@@ -37,5 +37,6 @@
 		<mapping resource="org/crazyit/app/domain/Person.hbm.xml"/>
 		<mapping resource="org/crazyit/app/domain/Address.hbm.xml"/>
 		<mapping resource="org/crazyit/app/domain/School.hbm.xml"/>
+		<mapping resource="org/crazyit/app/domain/Interest.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

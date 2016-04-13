@@ -2,6 +2,7 @@ package lee;
 
 import org.crazyit.app.domain.Address;
 import org.crazyit.app.domain.Person;
+import org.crazyit.app.domain.School;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
@@ -58,11 +59,22 @@ public class PersonManager {
 	}
 	
 	@Test
-	public void testLoad1(){
+	public void testLoad1ToN(){
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 		Person p=(Person) session.load(Person.class, new Integer(2));
 		System.out.println(p.getSchools().size());
+		System.out.println(((School)(p.getSchools().toArray()[0])).getSchool_name());
+		tx.commit();
+		HibernateUtil.closeSession();
+	}
+	
+	@Test
+	public void testLoadNTo1(){
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		Person p=(Person) session.load(Person.class, new Integer(6));
+		System.out.println(p.getAddress().getAddressDetail());
 		tx.commit();
 		HibernateUtil.closeSession();
 	}
