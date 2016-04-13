@@ -1,6 +1,7 @@
 package lee;
 
 import org.crazyit.app.domain.Address;
+import org.crazyit.app.domain.Interest;
 import org.crazyit.app.domain.Person;
 import org.crazyit.app.domain.School;
 import org.hibernate.Session;
@@ -36,7 +37,10 @@ public class PersonManager {
 		p.setName("Yeeku");
 		p.setAge(29);
 		// 设置Person和Address之间的关联关系
-		p.setAddress(a);
+		//p.setAddress(a);
+		Interest interest=new Interest();
+		interest.setInterest_content("篮球");
+		p.getInterests().add(interest);
 		// 持久化Person对象
 		session.persist(p);
 		// //创建一个瞬态的Address对象
@@ -75,6 +79,16 @@ public class PersonManager {
 		Transaction tx = session.beginTransaction();
 		Person p=(Person) session.load(Person.class, new Integer(6));
 		System.out.println(p.getAddress().getAddressDetail());
+		tx.commit();
+		HibernateUtil.closeSession();
+	}
+	
+	@Test
+	public void testLoadNToN(){
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		Person p=(Person) session.load(Person.class, new Integer(8));
+		System.out.println(p.getInterests().size());
 		tx.commit();
 		HibernateUtil.closeSession();
 	}

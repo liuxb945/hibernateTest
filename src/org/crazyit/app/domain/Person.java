@@ -29,7 +29,7 @@ public class Person {
 	// 集合属性，保留该对象关联的学校
 	private Set<School> schools = new HashSet<School>();
 	// 兴趣
-	private Set<Interest> interests;
+	private Set<Interest> interests= new HashSet<Interest>();
 
 	// id属性的setter和getter方法
 	public void setId(Integer id) {

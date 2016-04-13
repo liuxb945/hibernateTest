@@ -33,6 +33,10 @@
 			<key column="person_id" not-null="true"/>
 			<one-to-many class="School"/>
 		</set>
+		<set name="interests" cascade="save-update" table="person_interest">
+			<key column="person_id" not-null="true"/>
+			<many-to-many class="Interest" column="interest_id"/>
+		</set>
 		<!-- 用于映射N-1关联实体，指定关联实体类为Address
 		指定外键列名为address_id,并指定级联全部操作 -->
 		<many-to-one name="address" cascade="save-update"
