@@ -5,12 +5,9 @@
 <hibernate-mapping>
     <class name="org.crazyit.app.domain.School" table="SCHOOL">
         <id name="id" type="java.lang.Integer">
-            <column name="ID" />
+            <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="person_id" type="java.lang.Integer">
-            <column name="PERSON_ID" />
-        </property>
         <property name="school_name" type="java.lang.String">
             <column name="SCHOOL_NAME" />
         </property>

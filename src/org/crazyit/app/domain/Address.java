@@ -16,6 +16,8 @@ public class Address
 	private Integer addressId;
 	//地址详细信息
 	private String addressDetail;
+	private Integer person_id;
+	private Person person;
 	//无参数的构造器
 	public Address()
 	{
@@ -44,5 +46,17 @@ public class Address
 	public String getAddressDetail()
 	{
 		return this.addressDetail;
+	}
+	public Integer getPerson_id() {
+		return person_id;
+	}
+	public void setPerson_id(Integer person_id) {
+		this.person_id = person_id;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 }

@@ -13,5 +13,7 @@
 		</id>
 		<!-- Ó³ÉäÆÕÍ¨ÊôÐÔaddressDetail -->
 		<property name="addressDetail"/>
+		<property name="person_id" insert="false" update="false"/>
+		<many-to-one name="person" column="person_id" class="Person"></many-to-one>
 	</class>
 </hibernate-mapping>

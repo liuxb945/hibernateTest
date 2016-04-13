@@ -14,32 +14,15 @@
 		<!-- 用于映射普通属性 -->
 		<property name="name" type="string"/>
 		<property name="age" type="int"/>
-		<!-- 映射List集合属性 -->
-		<!-- <list name="schools" table="school">
-			映射集合属性数据表的外键列
-			<key column="person_id" not-null="true"/>
-			映射集合属性数据表的集合索引列
-			<list-index column="list_order"/>
-			映射保存集合元素的数据列
-			<element type="string" column="school_name"/>
-		</list> -->
-		<!-- <set name="schools" table="school">
-			映射集合属性数据表的外键列
-			<key column="person_id" not-null="true"/>
-			映射保存集合元素的数据列
-			<element type="string" column="school_name"/>
-		</set> -->
-		<set name="schools" table="school">
-			<key column="person_id" not-null="true"/>
-			<one-to-many class="School"/>
+		<property name="school_id" type="int" insert="false" update="false"/>
+		<set name="addrs" table="address" inverse="true">
+			<key column="person_id" />
+			<one-to-many class="Address"/>
 		</set>
 		<set name="interests" cascade="save-update" table="person_interest">
-			<key column="person_id" not-null="true"/>
+			<key column="person_id" />
 			<many-to-many class="Interest" column="interest_id"/>
 		</set>
-		<!-- 用于映射N-1关联实体，指定关联实体类为Address
-		指定外键列名为address_id,并指定级联全部操作 -->
-		<many-to-one name="address" cascade="save-update"
-			class="Address" column="address_id"/>
+		<many-to-one name="school" class="School" column="school_id"/>
 	</class>
 </hibernate-mapping>

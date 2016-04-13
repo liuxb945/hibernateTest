@@ -24,10 +24,11 @@ public class Person {
 	// 保留Person的age属性
 	private int age;
 	// 引用关联实体的属性
-	private Address address;
+	private Set<Address> addrs=new HashSet<Address>();
 
-	// 集合属性，保留该对象关联的学校
-	private Set<School> schools = new HashSet<School>();
+	private School school;
+	
+	private Integer school_id;
 	// 兴趣
 	private Set<Interest> interests= new HashSet<Interest>();
 
@@ -58,25 +59,21 @@ public class Person {
 		return this.age;
 	}
 
-	// address属性的setter和getter方法
-	public void setAddress(Address address) {
-		this.address = address;
+
+	public Set<Address> getAddrs() {
+		return addrs;
 	}
 
-	public Address getAddress() {
-		return this.address;
+	public void setAddrs(Set<Address> addrs) {
+		this.addrs = addrs;
 	}
 
-	/*
-	 * public List<String> getSchools() { return schools; } public void
-	 * setSchools(List<String> schools) { this.schools = schools; }
-	 */
-	public Set<School> getSchools() {
-		return schools;
+	public School getSchool() {
+		return school;
 	}
 
-	public void setSchools(Set<School> schools) {
-		this.schools = schools;
+	public void setSchool(School school) {
+		this.school = school;
 	}
 
 	public Set<Interest> getInterests() {
@@ -85,5 +82,13 @@ public class Person {
 
 	public void setInterests(Set<Interest> interests) {
 		this.interests = interests;
+	}
+
+	public Integer getSchool_id() {
+		return school_id;
+	}
+
+	public void setSchool_id(Integer school_id) {
+		this.school_id = school_id;
 	}
 }
