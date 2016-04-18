@@ -133,4 +133,28 @@ public class HqlQuery
 			System.out.println(p.getSchool().getSchool_name());
 		}
 	}
+	
+	@Test
+	public void findByNamedQuery()
+			throws Exception
+		{
+			//打开Hibernate的Session和事务
+			Session sess = HibernateUtil.currentSession();
+			Transaction tx = sess.beginTransaction();
+			System.out.println("===执行命名查询===");
+			//执行命名查询
+			List pl = sess.getNamedQuery("myNamedQuery")
+				//根据HQL语句里参数索引为参数赋值
+				.setInteger(0 , 29)
+				.list();
+			//迭代输出查询得到的每个Person对象
+			for (Iterator pit = pl.iterator() ; pit.hasNext(); )
+			{
+				Person p = ( Person )pit.next();
+				System.out.println(p.getName());
+			}
+			//提交事务、关闭Session
+			tx.commit();
+			HibernateUtil.closeSession();
+		}
 }

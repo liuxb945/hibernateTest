@@ -43,5 +43,8 @@
 		<mapping class="org.crazyit.app.domain.Person1"/>
 		<mapping resource="org/crazyit/app/domain/Person2.hbm.xml"/>
 		<mapping resource="org/crazyit/app/domain/MyEvent.hbm.xml"/>
+		<mapping resource="org/crazyit/app/domain/Student.hbm.xml"/>
+		<mapping resource="org/crazyit/app/domain/Course.hbm.xml"/>
+		<mapping resource="org/crazyit/app/domain/Enrolment.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

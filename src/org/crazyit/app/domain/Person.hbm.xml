@@ -25,4 +25,7 @@
 		</set>
 		<many-to-one name="school" class="School" column="school_id"/>
 	</class>
+	<query name="myNamedQuery">
+		from Person as p where p.age > ?
+	</query>
 </hibernate-mapping>
