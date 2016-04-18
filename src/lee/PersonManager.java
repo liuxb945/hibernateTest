@@ -1,8 +1,11 @@
 package lee;
 
 import org.crazyit.app.domain.Address;
+import org.crazyit.app.domain.Cat;
 import org.crazyit.app.domain.Interest;
+import org.crazyit.app.domain.Name;
 import org.crazyit.app.domain.Person;
+import org.crazyit.app.domain.Person1;
 import org.crazyit.app.domain.School;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -98,6 +101,20 @@ public class PersonManager {
 		Transaction tx = session.beginTransaction();
 		Person p = (Person) session.load(Person.class, new Integer(11));
 		System.out.println(((Interest)(p.getInterests().toArray()[0])).getInterest_content());
+		tx.commit();
+		HibernateUtil.closeSession();
+	}
+	
+	@Test
+	public void testCreatePerson1(){
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		//创建Person对象
+		Person1 yeeku = new Person1();
+		yeeku.setName(new Name("crazyit.org", "疯狂Java联盟"));
+		yeeku.setEmail("test@crazyit.org");
+		yeeku.setPet(new Cat("Garfield", "黄色"));
+		session.save(yeeku);
 		tx.commit();
 		HibernateUtil.closeSession();
 	}
