@@ -1,5 +1,7 @@
 package lee;
 
+import java.util.List;
+
 import org.crazyit.app.domain.Address;
 import org.crazyit.app.domain.Cat;
 import org.crazyit.app.domain.Interest;
@@ -10,6 +12,8 @@ import org.crazyit.app.domain.School;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
+
+import javassist.bytecode.Descriptor.Iterator;
 
 /**
  * Description: <br/>
@@ -111,10 +115,24 @@ public class PersonManager {
 		Transaction tx = session.beginTransaction();
 		//创建Person对象
 		Person1 yeeku = new Person1();
-		yeeku.setName(new Name("crazyit.org", "疯狂Java联盟"));
+		yeeku.setName(new Name("crazyit1.org", "疯狂Java联盟"));
 		yeeku.setEmail("test@crazyit.org");
 		yeeku.setPet(new Cat("Garfield", "黄色"));
 		session.save(yeeku);
+		tx.commit();
+		HibernateUtil.closeSession();
+	}
+	
+	@Test
+	public void testLoadPerson1(){
+		System.out.println("begin");
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		List list=session.createQuery("select distinct p from Person1 p where email=:email").setString("email", "test@crazyit.org").list();
+		System.out.println(list.size());
+		for(Object p:list){
+			System.out.println(((Person1)p).getName().getFirst());
+		}
 		tx.commit();
 		HibernateUtil.closeSession();
 	}
